@@ -1,0 +1,86 @@
+<div class="background-delete"></div>
+<div class="header">
+  <div class="reproductor">
+    <div class="portada-container">
+      <img class="test-hover" src="{{audioControls.song.cover}}">
+    </div>
+    <div class="player-container">
+      <div class="flat-play">
+        <div class="flat-control">
+          <div class="right-control">
+            <p>
+              {{audioControls.song.title}}
+              <span class="component progress-num">{{audioControls.currentTime}} / {{audioControls.totalTime}}</span>
+            </p>
+            <span class="component bar-container disabled" (click)="audioControlClick()">
+              <div class="bar bar1"></div>
+              <div class="bar bar2"></div>
+              <div class="bar bar3"></div>
+              <div class="bar bar4"></div>
+            </span>
+            <span (click)="progressBarClick($event)" id="progress-bar" class="component progress-bar">
+              <span class="current-progress"></span>
+            </span>
+          </div>
+          <div class="left-control">
+            <span class="volume-bar">
+              <i (click)="mute()" id="volume" class="component fa fa-volume-up"></i>
+            </span>
+            <!-- Open playlist -->
+            <span (click)="togglePlaylist('playlistMenu')" class="openPlaylistMenu" id="openPlaylistMenu">
+              <i class="fa fa-list-ul"></i>
+            </span>
+          </div>
+        </div>
+        <audio id="audio" (loadedmetadata)="onLoadedMetadata()" (ended)="onEnded()"
+          (timeupdate)="onTimeUpdate()">
+          <source src="{{audioControls.song.audio}}" type="audio/mp3" />
+        </audio>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="playlistMenu" [@slideInOut]="animationState">
+  <ul cdkDropList  #new="cdkDropList" [cdkDropListData]="songsArray" [cdkDropListConnectedTo]="[active]" class="playlistMenuInner"  (cdkDropListDropped)="drop($event)" draggable="false">
+    <li cdkDragBoundary="#playlistMenu" *ngFor="let item of songsArray;let i = index" id="track_element_{{i}}" cdkDrag>
+      <div class="track">
+        <div>
+          {{item.title}}
+          <span>{{item.album}} - {{item.artist}}</span>
+        </div>
+        <div class="text-left" (click)="playSelected(item, i)">
+          <i class="fa fa-play"></i>
+          <span>Play</span>
+        </div>
+        <div class="portada">
+          <i class="fa fa-bars" cdkDragHandle></i>
+          <!-- <img src="{{item.cover}}" /> -->
+        </div>
+      </div>
+    </li>
+
+    <div cdkDropList #active="cdkDropList" [cdkDropListDisabled]="true" [cdkDropListData]="songToDelete" [cdkDropListConnectedTo]="[new]" class="playlist-options" (cdkDropListEntered)="entered()" (cdkDropListDropped)="onDropDelete($event)">
+        <div cdkDrag></div>
+      <span><i class="far fa-trash-alt"></i></span>
+    </div>
+    
+  </ul>
+</div>
+
+
+
+
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+<label for="openSidebarMenu" class="sidebarIconToggle">
+  <div class="spinner diagonal part-1"></div>
+  <div class="spinner horizontal"></div>
+  <div class="spinner diagonal part-2"></div>
+</label>
+<div id="sidebarMenu">
+  <ul class="sidebarMenuInner">
+    <li>Nicolás Carosi <span>Front End Developer</span></li>
+    <li><a href="https://www.instagram.com/reborn_016/" target="_blank">Instagram</a></li>
+    <li><a href="https://www.linkedin.com/in/nicolas-carosi/" target="_blank">Linkedin</a></li>
+  </ul>
+</div>

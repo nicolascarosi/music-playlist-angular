@@ -1,0 +1,19 @@
+<section id="related-artists-component">
+    <div class="related-artists-container">
+        <div class="main-title">
+            <h4>Artistas relacionados</h4>
+            <a href="#">Ver más <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <ul>
+            <li *ngFor="let item of relatedArtists;let i = index">
+                <div class="cover">
+                    <img src="{{item.image}}" alt="{{item.artist}}">
+                </div>
+                <div class="info">
+                    <span class="artist">{{item.artist}}</span>
+                    <span>{{item.albums}} Albumes</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

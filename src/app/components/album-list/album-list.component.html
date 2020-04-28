@@ -1,0 +1,14 @@
+<section id="album-list-component">
+    <div class="main-title">
+        <h4>Albumes</h4>
+    </div>
+    <div class="album card-box p-0" *ngFor="let item of albumArray; let i = index">
+        <div class="cover">
+            <img src="{{item.cover}}" alt="{{item.album}}">
+        </div>
+        <div class="data">
+            <h6>{{item.album}}</h6>
+            <p>{{item.info}}</p>
+        </div>
+    </div>
+</section>

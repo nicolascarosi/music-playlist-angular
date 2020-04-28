@@ -1,0 +1,37 @@
+@import 'mixins.less';
+
+#song-list-component {
+  .playlist {
+    .controls {
+      .display-flex;
+      .justify-content(flex-end);
+      .btn {
+        margin-left: 5px;
+        padding: 2px 6px;
+        font-size: 14px;    
+      }
+    }
+    ol {
+      li {
+        .display-grid;
+        .grid-template-columns(1fr 5fr 5fr);
+        .align-items(center);
+        border-bottom: 1px solid #EEE;
+        padding: 0px 10px;
+      }
+    }
+  }
+  
+  .fa{
+    vertical-align:middle;
+    line-height:40px;
+    font-size:1.1em;
+    cursor:pointer;
+  }
+  
+  .fa-volume-off, .fa-volume-up, .fa-volume-mute, .fa-volume-down, .fa-volume-mute  {
+    color: #FFF;
+    font-size:1.5em;
+    width: 15px;
+  }
+}

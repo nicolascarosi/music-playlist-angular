@@ -1,0 +1,24 @@
+@import 'mixins.less';
+
+.album {
+    .display-grid;
+    .grid-template-columns(1fr 5fr 1fr);
+    margin-bottom: 10px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .cover {
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .data {
+        padding: 12px 10px;
+        p {
+            margin-top: 5px;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+    }
+}

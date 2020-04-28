@@ -1,0 +1,20 @@
+<section id="song-list-component">
+    <div class="playlist card-box p-0">
+        <div class="title">
+            <h5>Canciones</h5>
+        </div>
+        <ol>
+            <li *ngFor="let item of songsArray;let i = index">
+                <div class="options">
+                    <i class="component fa fa-play play-pause"></i>
+                </div>
+                <div class="info">
+                    <h6>{{item.title}}</h6>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-success" (click)="addToPlaylist(item)"><i class="fas fa-plus"></i></button>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
